@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Learning Roadmap — 9 Months to Full Stack</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+
+  :root {
+    --bg:       #0b0e14;
+    --surface:  #12161f;
+    --surface2: #1a1f2e;
+    --border:   #252a38;
+    --border2:  #2e3548;
+    --text:     #dde3f0;
+    --muted:    #6b7591;
+    --dim:      #4a5270;
+
+    --purple:   #8b7ef8;
+    --purple-bg:#1c1833;
+    --purple-bd:#2e2660;
+
+    --teal:     #2fd4a0;
+    --teal-bg:  #0d2620;
+    --teal-bd:  #1a4a3a;
+
+    --amber:    #f5a623;
+    --amber-bg: #251800;
+    --amber-bd: #4a3200;
+
+    --coral:    #f07050;
+    --coral-bg: #220e08;
+    --coral-bd: #4a2010;
+
+    --green:    #3dd68c;
+    --blue:     #4a9eff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-width: 1000px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0b0e14 0%, #0f1422 50%, #12102a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(139,126,248,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 200px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(47,212,160,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #dde3f0 0%, #8b7ef8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 620px;
+    margin-bottom: 32px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .stat-divider {
+    width: 1px;
+    background: var(--border);
+    align-self: stretch;
+    margin: 4px 0;
+  }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
+
+  /* ── SECTION TITLES ── */
+  .section {
+    padding: 48px 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: .1em;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    overflow-x: auto;
+  }
+  .timeline-label-row {
+    display: flex;
+    margin-bottom: 8px;
+    margin-left: 120px;
+  }
+  .tl-month {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid var(--border);
+    padding-left: 4px;
+  }
+  .timeline-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    min-height: 36px;
+  }
+  .tl-book-label {
+    width: 120px;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 500;
+    padding-right: 16px;
+    text-align: right;
+    color: var(--muted);
+  }
+  .tl-track {
+    flex: 1;
+    position: relative;
+    height: 36px;
+    background: rgba(255,255,255,.02);
+    border-radius: 4px;
+  }
+  .tl-bar {
+    position: absolute;
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .tl-bar-faded {
+    opacity: .45;
+  }
+  .tl-milestone {
+    position: absolute;
+    top: -12px;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+  }
+  .tl-milestone-line {
+    width: 1px;
+    height: 60px;
+    background: rgba(61,214,140,.3);
+    margin-top: 4px;
+  }
+
+  /* ── BOOK CARDS ── */
+  .books-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .book-card {
+    border-radius: 12px;
+    border: 1px solid;
+    overflow: hidden;
+  }
+  .book-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid;
+  }
+  .book-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: .7;
+  }
+  .book-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .book-author {
+    font-size: 12px;
+    opacity: .6;
+    font-style: italic;
+  }
+  .book-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .book-meta-item {
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    opacity: .7;
+  }
+  .book-card-body {
+    padding: 16px 24px 20px;
+  }
+  .phase-list {
+    list-style: none;
+  }
+  .phase-item {
+    display: flex;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    align-items: flex-start;
+  }
+  .phase-item:last-child { border-bottom: none; }
+  .phase-weeks {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    width: 60px;
+    flex-shrink: 0;
+    padding-top: 1px;
+    opacity: .55;
+  }
+  .phase-desc {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* BOOK COLORS */
+  .book-purple { border-color: var(--purple-bd); background: var(--purple-bg); }
+  .book-purple .book-card-header { border-color: var(--purple-bd); }
+  .book-purple .book-num { color: var(--purple); }
+  .book-purple .book-title { color: #c4bbff; }
+  .book-purple .phase-weeks { color: var(--purple); }
+
+  .book-teal { border-color: var(--teal-bd); background: var(--teal-bg); }
+  .book-teal .book-card-header { border-color: var(--teal-bd); }
+  .book-teal .book-num { color: var(--teal); }
+  .book-teal .book-title { color: #8ef5d8; }
+  .book-teal .phase-weeks { color: var(--teal); }
+
+  .book-amber { border-color: var(--amber-bd); background: var(--amber-bg); }
+  .book-amber .book-card-header { border-color: var(--amber-bd); }
+  .book-amber .book-num { color: var(--amber); }
+  .book-amber .book-title { color: #ffc86e; }
+  .book-amber .phase-weeks { color: var(--amber); }
+
+  .book-coral { border-color: var(--coral-bd); background: var(--coral-bg); }
+  .book-coral .book-card-header { border-color: var(--coral-bd); }
+  .book-coral .book-num { color: var(--coral); }
+  .book-coral .book-title { color: #ffb49e; }
+  .book-coral .phase-weeks { color: var(--coral); }
+
+  /* ── PROJECTS ── */
+  .projects-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .project-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 10px;
+    opacity: .5;
+  }
+  .project-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .project-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .project-week {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    margin-top: 10px;
+    opacity: .7;
+  }
+
+  /* ── CONNECTIONS ── */
+  .connections-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .conn-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .conn-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .conn-item {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .conn-item:last-child { border-bottom: none; }
+  .conn-arrow { color: var(--dim); }
+
+  /* ── HOURS SECTION ── */
+  .pacing-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .pace-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .pace-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+  }
+  .pace-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .pace-sub {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 32px 64px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-size: 12px;
+    color: var(--dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .footer-right {
+    font-size: 11px;
+    color: var(--dim);
+  }
+
+  /* ── ALL-WEEKS TABLE ── */
+  .weeks-table-wrap {
+    overflow-x: auto;
+  }
+  .weeks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .weeks-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--dim);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .weeks-table td {
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.03);
+    vertical-align: top;
+    color: var(--text);
+  }
+  .weeks-table tr:hover td { background: rgba(255,255,255,.02); }
+  .wk-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .wk-book {
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .wk-chapter {
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .wk-practice {
+    color: var(--muted);
+    font-size: 11px;
+    max-width: 280px;
+  }
+  .wk-type {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
+  }
+
+  /* Type pills */
+  .type-build   { background: rgba(61,214,140,.15); color: #3dd68c; }
+  .type-read    { background: rgba(74,158,255,.15); color: #4a9eff; }
+  .type-heavy   { background: rgba(245,166,35,.15); color: #f5a623; }
+  .type-design  { background: rgba(47,212,160,.15); color: #2fd4a0; }
+  .type-project { background: rgba(240,112,80,.15); color: #f07050; }
+  .type-reflect { background: rgba(139,126,248,.15); color: #8b7ef8; }
+
+  /* Per-book table row colors */
+  .row-purple td:first-child { border-left: 2px solid var(--purple); }
+  .row-teal   td:first-child { border-left: 2px solid var(--teal); }
+  .row-amber  td:first-child { border-left: 2px solid var(--amber); }
+  .row-coral  td:first-child { border-left: 2px solid var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow">// AI Engineer Learning Roadmap</div>
+  <h1>From Software Engineer<br>to AI Engineering Expert</h1>
+  <div class="hero-sub">A structured 9-month, 4-book curriculum for software engineers targeting AI engineering and ML roles — 10–12 hours per week.</div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">36</span>
+      <span class="stat-label">Weeks total</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Books</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">~400</span>
+      <span class="stat-label">Hours invested</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Portfolio projects</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">72</span>
+      <span class="stat-label">Reading weeks</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: TIMELINE ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <span class="section-title">9-Month Overview Timeline</span>
+  </div>
+
+  <div class="timeline-wrap">
+    <!-- month labels -->
+    <div style="display:flex; margin-left:120px; margin-bottom:14px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 1</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 2</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 3</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 4</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 5</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 6</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 7</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 8</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);flex:1;text-align:center;border-left:1px solid var(--border);padding:2px 0 2px 4px;">Month 9</div>
+    </div>
+
+    <!-- Book 1: Huyen AI Engineering wk1-14 out of 36 = 0%–38.9% + 38.9%–38.9%  -->
+    <!-- We use % of 36 weeks total -->
+    <!-- wk1=0%, wk10=25%, wk14=36.1%, wk13=33.3% -->
+    <div style="display:flex;align-items:center;margin-bottom:10px;">
+      <div style="width:120px;font-size:11px;font-weight:500;padding-right:16px;text-align:right;color:#8b7ef8;flex-shrink:0;">AI Engineering</div>
+      <div style="flex:1;position:relative;height:34px;">
+        <!-- Primary bar wk1-10: 0% to 27.8% -->
+        <div style="position:absolute;left:0%;width:27.8%;height:100%;background:rgba(139,126,248,.25);border:1px solid rgba(139,126,248,.4);border-radius:4px;display:flex;align-items:center;padding:0 10px;">
+          <span style="font-size:11px;font-weight:500;color:#c4bbff;white-space:nowrap;">Primary — Wks 1–10</span>
+        </div>
+        <!-- Wrap-up bar wk10-14: 27.8% to 38.9% -->
+        <div style="position:absolute;left:27.8%;width:11.1%;height:100%;background:rgba(139,126,248,.10);border:1px solid rgba(139,126,248,.2);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:10px;color:#8b7ef8;opacity:.7;">wrap-up</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 2: Géron wk1-26: 0% to 72.2% -->
+    <div style="display:flex;align-items:center;margin-bottom:10px;">
+      <div style="width:120px;font-size:11px;font-weight:500;padding-right:16px;text-align:right;color:#2fd4a0;flex-shrink:0;">Hands-On ML</div>
+      <div style="flex:1;position:relative;height:34px;">
+        <!-- Part 1 wk1-12: 0% to 33.3% -->
+        <div style="position:absolute;left:0%;width:33.3%;height:100%;background:rgba(47,212,160,.22);border:1px solid rgba(47,212,160,.4);border-radius:4px;display:flex;align-items:center;padding:0 10px;">
+          <span style="font-size:11px;font-weight:500;color:#8ef5d8;white-space:nowrap;">Part 1: Scikit-Learn — Wks 1–12</span>
+        </div>
+        <!-- Part 2 wk13-26: 33.3% to 72.2% -->
+        <div style="position:absolute;left:33.3%;width:38.9%;height:100%;background:rgba(47,212,160,.15);border:1px solid rgba(47,212,160,.3);border-radius:4px;display:flex;align-items:center;padding:0 10px;">
+          <span style="font-size:11px;font-weight:500;color:#8ef5d8;white-space:nowrap;">Part 2: Deep Learning + PyTorch — Wks 13–26</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 3: DDIA wk13-28: 33.3% to 77.8% -->
+    <div style="display:flex;align-items:center;margin-bottom:10px;">
+      <div style="width:120px;font-size:11px;font-weight:500;padding-right:16px;text-align:right;color:#f5a623;flex-shrink:0;">DDIA 2nd Ed.</div>
+      <div style="flex:1;position:relative;height:34px;">
+        <!-- Part I Foundations wk13-17: 33.3% to 47.2% -->
+        <div style="position:absolute;left:33.3%;width:13.9%;height:100%;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);border-radius:4px 0 0 4px;display:flex;align-items:center;padding:0 8px;">
+          <span style="font-size:10px;font-weight:500;color:#ffc86e;white-space:nowrap;">Foundations</span>
+        </div>
+        <!-- Part II Distributed wk18-24: 47.2% to 66.7% -->
+        <div style="position:absolute;left:47.2%;width:19.5%;height:100%;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);display:flex;align-items:center;padding:0 8px;">
+          <span style="font-size:10px;font-weight:500;color:#ffc86e;white-space:nowrap;">Distributed Data</span>
+        </div>
+        <!-- Part III Derived wk25-28: 66.7% to 77.8% -->
+        <div style="position:absolute;left:66.7%;width:11.1%;height:100%;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);border-radius:0 4px 4px 0;display:flex;align-items:center;padding:0 8px;">
+          <span style="font-size:10px;font-weight:500;color:#ffc86e;white-space:nowrap;">Derived</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 4: Patterns wk27-36: 72.2% to 100% -->
+    <div style="display:flex;align-items:center;margin-bottom:20px;">
+      <div style="width:120px;font-size:11px;font-weight:500;padding-right:16px;text-align:right;color:#f07050;flex-shrink:0;">Patterns Dist. Sys.</div>
+      <div style="flex:1;position:relative;height:34px;">
+        <div style="position:absolute;left:72.2%;width:27.8%;height:100%;background:rgba(240,112,80,.2);border:1px solid rgba(240,112,80,.4);border-radius:4px;display:flex;align-items:center;padding:0 10px;">
+          <span style="font-size:11px;font-weight:500;color:#ffb49e;white-space:nowrap;">29 Patterns — Wks 27–36</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- milestone markers -->
+    <div style="display:flex;align-items:center;margin-bottom:0;">
+      <div style="width:120px;flex-shrink:0;"></div>
+      <div style="flex:1;position:relative;height:28px;">
+        <!-- Project 1 at wk4: 10% -->
+        <div style="position:absolute;left:10%;transform:translateX(-50%);text-align:center;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#3dd68c;white-space:nowrap;">▲ Project 1</div>
+          <div style="font-size:9px;color:var(--dim);">Wk 4</div>
+        </div>
+        <!-- Project 2 at wk16: 41.7% -->
+        <div style="position:absolute;left:41.7%;transform:translateX(-50%);text-align:center;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#3dd68c;white-space:nowrap;">▲ Project 2</div>
+          <div style="font-size:9px;color:var(--dim);">Wk 16</div>
+        </div>
+        <!-- Project 3 at wk30: 80.6% -->
+        <div style="position:absolute;left:80.6%;transform:translateX(-50%);text-align:center;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#3dd68c;white-space:nowrap;">▲ Project 3</div>
+          <div style="font-size:9px;color:var(--dim);">Wk 30</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: PACING ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <span class="section-title">Pacing at 10–12 Hours / Week</span>
+  </div>
+  <div class="pacing-row">
+    <div class="pace-card">
+      <span class="pace-num" style="color:#8b7ef8;">10 wks</span>
+      <div class="pace-label">AI Engineering</div>
+      <div class="pace-sub">~50 pg/week · read + reflect</div>
+    </div>
+    <div class="pace-card">
+      <span class="pace-num" style="color:#2fd4a0;">26 wks</span>
+      <div class="pace-label">Hands-On ML</div>
+      <div class="pace-sub">878 pages · code along</div>
+    </div>
+    <div class="pace-card">
+      <span class="pace-num" style="color:#f5a623;">16 wks</span>
+      <div class="pace-label">DDIA 2nd Edition</div>
+      <div class="pace-sub">~600 pages · think + design</div>
+    </div>
+    <div class="pace-card">
+      <span class="pace-num" style="color:#f07050;">10 wks</span>
+      <div class="pace-label">Patterns Dist. Sys.</div>
+      <div class="pace-sub">29 patterns · read code</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: BOOK CARDS ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <span class="section-title">Book-by-Book Plans</span>
+  </div>
+  <div class="books-grid">
+
+    <!-- Book 1 -->
+    <div class="book-card book-purple">
+      <div class="book-card-header">
+        <div class="book-num">Book 01 · Weeks 1–14</div>
+        <div class="book-title">AI Engineering: Building Applications<br>with Foundation Models</div>
+        <div class="book-author">Chip Huyen — O'Reilly 2025</div>
+        <div class="book-meta">
+          <span class="book-meta-item">10 chapters</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">536 pages</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">No code, read + build</span>
+        </div>
+      </div>
+      <div class="book-card-body">
+        <ul class="phase-list">
+          <li class="phase-item"><span class="phase-weeks">Wk 1–3</span><span class="phase-desc">Foundations — landscape, foundation models, evaluation methodology</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 4–6</span><span class="phase-desc">Build layer — evaluate AI systems, prompt engineering, RAG + agents <span class="phase-tag" style="background:rgba(61,214,140,.15);color:#3dd68c;">★ Build eval harness + RAG pipeline</span></span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 7–9</span><span class="phase-desc">Optimise — finetuning, dataset engineering, inference optimisation</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 10–14</span><span class="phase-desc">Architecture, user feedback + production systems. Wrap-up + project.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="book-card book-teal">
+      <div class="book-card-header">
+        <div class="book-num">Book 02 · Weeks 1–26</div>
+        <div class="book-title">Hands-On ML with Scikit-Learn<br>and PyTorch</div>
+        <div class="book-author">Aurélien Géron — O'Reilly 2025</div>
+        <div class="book-meta">
+          <span class="book-meta-item">19 chapters</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">878 pages</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">Code along every chapter</span>
+        </div>
+      </div>
+      <div class="book-card-body">
+        <ul class="phase-list">
+          <li class="phase-item"><span class="phase-weeks">Wk 1–9</span><span class="phase-desc">Part 1 — ML landscape, end-to-end project, classification, training models, SVMs, trees, ensembles, dimensionality reduction, unsupervised</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 9</span><span class="phase-desc"><span class="phase-tag" style="background:rgba(240,112,80,.15);color:#f07050;">★ Project 1 — full Scikit-Learn pipeline on Kaggle dataset</span></span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 10–16</span><span class="phase-desc">Part 2 — PyTorch fundamentals, deep networks, custom models, data loading, CNNs, NLP + transformers (Hugging Face)</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 17–21</span><span class="phase-desc">Advanced — autoencoders, GANs, diffusion models, RL, deployment at scale</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 22–26</span><span class="phase-desc"><span class="phase-tag" style="background:rgba(240,112,80,.15);color:#f07050;">★ Capstone — end-to-end deep learning project with deployment</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="book-card book-amber">
+      <div class="book-card-header">
+        <div class="book-num">Book 03 · Weeks 13–28</div>
+        <div class="book-title">Designing Data-Intensive Applications<br>2nd Edition</div>
+        <div class="book-author">Martin Kleppmann + Chris Riccomini — O'Reilly 2026</div>
+        <div class="book-meta">
+          <span class="book-meta-item">13 chapters</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">~620 pages</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">Read + think + design</span>
+        </div>
+      </div>
+      <div class="book-card-body">
+        <ul class="phase-list">
+          <li class="phase-item"><span class="phase-weeks">Wk 13–17</span><span class="phase-desc">Part I Foundations — trade-offs, nonfunctional requirements (new), data models, storage/retrieval, encoding + evolution</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 18–24</span><span class="phase-desc">Part II Distributed — replication, partitioning, transactions (2 wks), distributed systems trouble, consistency + consensus (2 wks)</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 25–27</span><span class="phase-desc">Part III Derived — batch processing, stream processing, future of data systems</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 28</span><span class="phase-desc"><span class="phase-tag" style="background:rgba(245,166,35,.15);color:#f5a623;">Connect to AI engineering — feature stores, pipelines, serving</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Book 4 -->
+    <div class="book-card book-coral">
+      <div class="book-card-header">
+        <div class="book-num">Book 04 · Weeks 27–36</div>
+        <div class="book-title">Patterns of Distributed Systems</div>
+        <div class="book-author">Unmesh Joshi — Addison-Wesley 2023</div>
+        <div class="book-meta">
+          <span class="book-meta-item">29 patterns</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">32 chapters</span>
+          <span class="book-meta-item">·</span>
+          <span class="book-meta-item">Java code for every pattern</span>
+        </div>
+      </div>
+      <div class="book-card-body">
+        <ul class="phase-list">
+          <li class="phase-item"><span class="phase-weeks">Wk 27</span><span class="phase-desc">Narratives — promise/perils overview, pattern dependency map (read Ch 2 twice)</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 28–29</span><span class="phase-desc">Storage + Replication — WAL, Segmented Log, Low-Water Mark, Leader/Followers, HeartBeat, Majority Quorum, Generation Clock, High-Water Mark</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 30–32</span><span class="phase-desc">Consensus + Communication — Paxos, Replicated Log, Singular Update Queue, Idempotent Receiver, Follower Reads, Versioned Value, Version Vector, Fixed/Key-Range Partitions</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 33–35</span><span class="phase-desc">Time + Cluster + Network — Two-Phase Commit, Lamport/Hybrid Clock, Clock-Bound Wait, Consistent Core, Lease, State Watch, Gossip, Emergent Leader, Single-Socket Channel, Batching, Pipelining</span></li>
+          <li class="phase-item"><span class="phase-weeks">Wk 36</span><span class="phase-desc"><span class="phase-tag" style="background:rgba(61,214,140,.15);color:#3dd68c;">★ Final synthesis — connect all 4 books</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ SECTION 4: PROJECTS ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04 —</span>
+    <span class="section-title">3 Portfolio Projects</span>
+  </div>
+  <div class="projects-row">
+    <div class="project-card" style="border-top:3px solid var(--purple);">
+      <div class="project-num">01</div>
+      <div class="project-title">RAG Pipeline + Eval Harness</div>
+      <div class="project-desc">Build an end-to-end RAG application: ingest documents, embed + store in a vector DB, query with an LLM. Attach a systematic evaluation harness that uses an LLM-as-judge to score outputs across 20+ test cases.</div>
+      <div class="project-week">Week 4–6 · AI Engineering + Géron foundations</div>
+    </div>
+    <div class="project-card" style="border-top:3px solid var(--teal);">
+      <div class="project-num">02</div>
+      <div class="project-title">Fine-tuned Deep Learning Model</div>
+      <div class="project-desc">Pick a real problem (image classification, text classification, or tabular prediction). Fine-tune a pretrained model from Hugging Face. Track experiments with W&amp;B. Deploy to Hugging Face Spaces. Full README as portfolio piece.</div>
+      <div class="project-week">Week 14–16 · Géron deep learning chapters</div>
+    </div>
+    <div class="project-card" style="border-top:3px solid var(--coral);">
+      <div class="project-num">03</div>
+      <div class="project-title">AI Data Architecture Design</div>
+      <div class="project-desc">Design a production AI system architecture: feature store, training pipeline, model serving layer, streaming inference, monitoring. For each component, map the DDIA concept + Joshi pattern that underlies it. Present as a technical design doc.</div>
+      <div class="project-week">Week 30–32 · DDIA + Patterns synthesis</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: CROSS-BOOK CONNECTIONS ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05 —</span>
+    <span class="section-title">How the Four Books Connect</span>
+  </div>
+  <div class="connections-grid">
+    <div class="conn-card" style="border-top:2px solid var(--purple);">
+      <div class="conn-title" style="color:#c4bbff;">AI Engineering concern</div>
+      <div class="conn-item"><span>RAG + retrieval</span><span class="conn-arrow">→</span></div>
+      <div class="conn-item"><span>Inference optimisation</span><span class="conn-arrow">→</span></div>
+      <div class="conn-item"><span>Fine-tuning</span><span class="conn-arrow">→</span></div>
+      <div class="conn-item"><span>Evaluation pipelines</span><span class="conn-arrow">→</span></div>
+      <div class="conn-item"><span>Model serving</span><span class="conn-arrow">→</span></div>
+    </div>
+    <div class="conn-card" style="border-top:2px solid var(--teal);">
+      <div class="conn-title" style="color:#8ef5d8;">Géron ML foundation</div>
+      <div class="conn-item"><span>Embedding + nearest neighbour search</span></div>
+      <div class="conn-item"><span>Quantisation, distillation (Ch 19)</span></div>
+      <div class="conn-item"><span>Transfer learning (Ch 11, 15)</span></div>
+      <div class="conn-item"><span>Metrics: precision, recall, ROUGE</span></div>
+      <div class="conn-item"><span>PyTorch, TorchServe (Ch 19)</span></div>
+    </div>
+    <div class="conn-card" style="border-top:2px solid var(--amber);">
+      <div class="conn-title" style="color:#ffc86e;">DDIA systems layer</div>
+      <div class="conn-item"><span>Storage + indexing (Ch 4)</span></div>
+      <div class="conn-item"><span>Partitioning + replication (Ch 6–7)</span></div>
+      <div class="conn-item"><span>Encoding + schema evolution (Ch 5)</span></div>
+      <div class="conn-item"><span>Stream processing (Ch 12)</span></div>
+      <div class="conn-item"><span>Batch processing pipelines (Ch 11)</span></div>
+    </div>
+    <div class="conn-card" style="border-top:2px solid var(--coral);">
+      <div class="conn-title" style="color:#ffb49e;">Joshi implementation</div>
+      <div class="conn-item"><span>Write-Ahead Log, Segmented Log</span></div>
+      <div class="conn-item"><span>Fixed/Key-Range Partitions</span></div>
+      <div class="conn-item"><span>Versioned Value, Version Vector</span></div>
+      <div class="conn-item"><span>Replicated Log, Consistent Core</span></div>
+      <div class="conn-item"><span>Request Batch, Pipeline</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: FULL SCHEDULE ══ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06 —</span>
+    <span class="section-title">Complete 36-Week Schedule</span>
+  </div>
+  <div class="weeks-table-wrap">
+    <table class="weeks-table">
+      <thead>
+        <tr>
+          <th style="width:70px;">Week</th>
+          <th style="width:130px;">Book</th>
+          <th style="width:220px;">Chapter / Focus</th>
+          <th>Key Practice Task</th>
+          <th style="width:110px;">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- WEEKS 1–10: Huyen primary + Géron Part 1 running in parallel -->
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 1</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 1 — The AI engineering landscape</td><td class="wk-practice">Sign up for an LLM API, explore 10+ prompts manually</td><td><span class="wk-type type-read">orient</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 1</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 1 — The ML landscape</td><td class="wk-practice">Set up Python environment, run first Colab notebook</td><td><span class="wk-type type-read">setup</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 2</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 2 — Understanding foundation models</td><td class="wk-practice">Experiment with temperature + sampling params</td><td><span class="wk-type type-read">deep read</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 2</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 2 — End-to-end ML project (heaviest chapter)</td><td class="wk-practice">Full California housing pipeline — every step manually</td><td><span class="wk-type type-heavy">heavy</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 3</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 3 — Classification</td><td class="wk-practice">Binary + multiclass MNIST classifier, ROC/AUC exploration</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 3</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 3 — Evaluation methodology</td><td class="wk-practice">Design eval rubric for your Week 1 prompts</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 4</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 4 — Evaluate AI systems</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">★ Build eval harness with LLM-as-judge (20 test cases)</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 4</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 4 — Training models (gradient descent, regularisation)</td><td class="wk-practice">Implement linear regression with NumPy from scratch first</td><td><span class="wk-type type-heavy">maths heavy</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 5</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 5–6 — SVMs + Decision Trees + XGBoost</td><td class="wk-practice">SVM on non-linear data, decision tree visualisation</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 5</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 5 — Prompt engineering</td><td class="wk-practice">Compare 3 prompt variants in eval harness, measure scores</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 6</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 7 — Ensemble learning + Random Forests</td><td class="wk-practice">Stacking ensemble + XGBoost on housing dataset</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 6</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 6 — RAG and agents</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">★ Build RAG pipeline with ChromaDB/FAISS, run eval harness on it</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 7</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 8 — Dimensionality reduction (PCA, t-SNE)</td><td class="wk-practice">PCA on MNIST → 2D visualisation, compare t-SNE</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 7</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 7 — Finetuning</td><td class="wk-practice">Write personal fine-tune vs RAG vs prompt decision framework</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 8</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 9 — Unsupervised learning (K-Means, GMMs)</td><td class="wk-practice">K-Means on real dataset, elbow + silhouette score</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 8</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 8 — Dataset engineering</td><td class="wk-practice">Audit quality of RAG documents, write data quality report</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 9</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Part 1 consolidation + ★ Project 1</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">★ Full Scikit-Learn pipeline on Kaggle dataset → portfolio</td><td><span class="wk-type type-build">★ project</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 9</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 9 — Inference optimisation</td><td class="wk-practice">Benchmark RAG pipeline: latency, tokens/sec, cost per query</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-purple"><td><span class="wk-badge" style="background:rgba(139,126,248,.2);color:#c4bbff;">Wk 10</span></td><td class="wk-book" style="color:#c4bbff;">AI Engineering</td><td class="wk-chapter">Ch 10 — Architecture + user feedback</td><td class="wk-practice">Sketch production architecture of RAG app end-to-end</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 10</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 10 — PyTorch fundamentals (big transition)</td><td class="wk-practice">Implement linear regression 3 ways: NumPy → tensors → nn.Module</td><td><span class="wk-type type-heavy">transition</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 11</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 11 — Training deep neural networks</td><td class="wk-practice">Deep MLP on MNIST, then transfer learning to new dataset</td><td><span class="wk-type type-heavy">heavy</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 12</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 12–13 — Custom models + data pipelines + HuggingFace</td><td class="wk-practice">Write custom training loop from scratch; switch to HF Datasets</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <!-- Weeks 13+ DDIA starts, Géron continues -->
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 13</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 14 — CNNs + Computer Vision</td><td class="wk-practice">Train CNN on CIFAR-10; fine-tune ResNet</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 13</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 1 — Trade-offs in data systems architecture (new)</td><td class="wk-practice">Write trade-off analysis of a system you've built at work</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 14</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 14 exercises + ★ vision project</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">★ Fine-tune pretrained model on custom image dataset → portfolio</td><td><span class="wk-type type-build">★ project</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 14</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 2 — Defining nonfunctional requirements (new)</td><td class="wk-practice">Write NFR doc for a system: p99 latency, fault rate, load growth</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 15</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 15 — NLP + Transformers + Hugging Face (pivotal)</td><td class="wk-practice">Fine-tune BERT for text classification end-to-end</td><td><span class="wk-type type-heavy">heavy</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 15</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 3 — Data models + query languages</td><td class="wk-practice">Design same schema 3 ways: relational, document, graph</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 16</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Advanced NLP + sequence models + exercises</td><td class="wk-practice">Fine-tune T5/BART for summarisation, evaluate with ROUGE</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 16</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 4 — Storage and retrieval (dense — go slow)</td><td class="wk-practice">Trace a read through B-tree vs LSM-tree step by step</td><td><span class="wk-type type-heavy">dense</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 17</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 17 — Autoencoders + GANs</td><td class="wk-practice">Train VAE on MNIST, visualise latent space sampling</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 17</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 5 — Encoding + evolution</td><td class="wk-practice">Map a past schema incident to Kleppmann's framework</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 18</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 17 — Diffusion models (most current topic)</td><td class="wk-practice">HuggingFace Diffusers: generate images + guided generation</td><td><span class="wk-type type-heavy">cutting edge</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 18</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 6 — Replication part 1 (leaders, lag, failover)</td><td class="wk-practice">Draw replication topology of a DB you use, label every arrow</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 19</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 18 — Reinforcement learning + Gymnasium</td><td class="wk-practice">Train DQN agent to solve CartPole</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 19</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 6 cont. + Ch 7 — Partitioning</td><td class="wk-practice">Design partitioning strategy for 100M ML training examples</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 20</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Ch 19 — Training + deploying at scale</td><td class="wk-practice">Quantise a model, measure size reduction + inference speedup</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 20</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 8 — Transactions part 1 (ACID + weak isolation)</td><td class="wk-practice">Build race condition reference card — 4 anomalies with examples</td><td><span class="wk-type type-heavy">hardest</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 21</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Exercises review + consolidation</td><td class="wk-practice">Complete all outstanding exercises from deep learning chapters</td><td><span class="wk-type type-reflect">consolidate</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 21</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 8 — Transactions part 2 (serializability + 2PC)</td><td class="wk-practice">Look up default isolation level of your main DB — is it what you assumed?</td><td><span class="wk-type type-heavy">dense</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 22</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">★ Capstone wk 1 — design + data + baseline</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">Choose problem, acquire data, run Scikit-Learn baseline</td><td><span class="wk-type type-build">★ project</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 22</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 9 — The trouble with distributed systems (revised)</td><td class="wk-practice">Find a real clock-skew incident post-mortem, map to framework</td><td><span class="wk-type type-reflect">reflect</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 23</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">★ Capstone wk 2 — model + training</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">Run 5+ training runs, log with W&amp;B, beat baseline</td><td><span class="wk-type type-build">★ project</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 23</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 10 — Consistency + consensus part 1 (★ hardest)</td><td class="wk-practice">Read once, write half-page summary without looking at book</td><td><span class="wk-type type-heavy">★ hardest</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 24</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">★ Capstone wk 3 — evaluation + deployment</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">Error analysis, deploy to HF Spaces, write README</td><td><span class="wk-type type-build">★ project</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 24</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 10 — Consistency + consensus part 2 (Raft/Paxos)</td><td class="wk-practice">Watch raft.github.io visualisation, map to etcd/Kubernetes</td><td><span class="wk-type type-heavy">dense</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 25</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Buffer + weak spots review</td><td class="wk-practice">Pick one unclear concept, go deep: paper + video + code</td><td><span class="wk-type type-reflect">flex</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 25</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 11 — Batch processing (MapReduce + Spark)</td><td class="wk-practice">Map an ML training pipeline to Kleppmann's batch framework</td><td><span class="wk-type type-read">read</span></td></tr>
+        <tr class="row-teal"><td><span class="wk-badge" style="background:rgba(47,212,160,.2);color:#8ef5d8;">Wk 26</span></td><td class="wk-book" style="color:#8ef5d8;">Hands-On ML</td><td class="wk-chapter">Reflect + plan what's next</td><td class="wk-practice">Write learning retrospective + update 3-month forward plan</td><td><span class="wk-type type-reflect">done ✓</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 26</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 12 — Stream processing (Kafka + real-time)</td><td class="wk-practice">Design real-time ML feature pipeline with streaming</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 27</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Ch 13 — The future of data systems</td><td class="wk-practice">Write 1-page data architecture review of a system you know</td><td><span class="wk-type type-reflect">synthesis</span></td></tr>
+        <!-- Patterns starts wk27 -->
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 27</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 1–2 — Narratives + Pattern overview map</td><td class="wk-practice">Draw pattern dependency graph from memory after Ch 2</td><td><span class="wk-type type-read">orient</span></td></tr>
+        <tr class="row-amber"><td><span class="wk-badge" style="background:rgba(245,166,35,.2);color:#ffc86e;">Wk 28</span></td><td class="wk-book" style="color:#ffc86e;">DDIA 2nd Ed.</td><td class="wk-chapter">Full review + AI engineering synthesis</td><td class="wk-practice">Build 1-page AI data architecture reference connecting both books</td><td><span class="wk-type type-design">done ✓</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 28</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 3–5 — Write-Ahead Log, Segmented Log, Low-Water Mark</td><td class="wk-practice">Map WAL → Kafka partition log, Segmented Log → Kafka segments</td><td><span class="wk-type type-read">code + map</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 29</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 6–10 — Leader/Followers, HeartBeat, Majority Quorum, Generation Clock, High-Water Mark</td><td class="wk-practice">Trace full write request through all 5 patterns as sequence diagram</td><td><span class="wk-type type-read">code along</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 30</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 11–12 — Paxos + Replicated Log (consensus deep dive)</td><td class="wk-practice">Compare Paxos vs Raft, map Replicated Log → etcd internals</td><td><span class="wk-type type-heavy">deep</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 31</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 13–16 — Singular Update Queue, Request Waiting List, Idempotent Receiver, Follower Reads</td><td class="wk-practice">Design idempotent LLM API endpoint with unique ID + response cache</td><td><span class="wk-type type-build">build</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 32</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 17–20 — Versioned Value, Version Vector, Fixed Partitions, Key-Range Partitions</td><td class="wk-practice">Compare Cassandra (hash) vs CockroachDB (key-range) partitioning</td><td><span class="wk-type type-design">design</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 33</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 21–24 — Two-Phase Commit, Lamport Clock, Hybrid Clock, Clock-Bound Wait</td><td class="wk-practice">Read Spanner's TrueTime paper, connect to Clock-Bound Wait pattern</td><td><span class="wk-type type-heavy">time is hard</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 34</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 25–29 — Consistent Core, Lease, State Watch, Gossip, Emergent Leader</td><td class="wk-practice">Map ZooKeeper: znodes→Consistent Core, ephemeral nodes→Lease, watchers→State Watch</td><td><span class="wk-type type-design">map to systems</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 35</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">Ch 30–32 — Single-Socket Channel, Request Batch, Request Pipeline</td><td class="wk-practice">Map Kafka producer config: linger.ms→Batching, max.in.flight→Pipelining</td><td><span class="wk-type type-build">map + perf</span></td></tr>
+        <tr class="row-coral"><td><span class="wk-badge" style="background:rgba(240,112,80,.2);color:#ffb49e;">Wk 36</span></td><td class="wk-book" style="color:#ffb49e;">Patterns</td><td class="wk-chapter">★ Final synthesis — four-book integration</td><td class="wk-practice" style="color:#3dd68c;font-weight:500;">★ Build AI systems stack reference: Géron + Huyen + DDIA + Joshi per concern</td><td><span class="wk-type type-design">done ✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <div class="footer-left">// ai_engineer_roadmap.html · 36 weeks · 10–12 hrs/wk · software engineer → AI engineer</div>
+  <div class="footer-right">Books: Huyen 2025 · Géron 2025 · Kleppmann/Riccomini 2026 · Joshi 2023</div>
+</div>
+
+</body>
+</html>
